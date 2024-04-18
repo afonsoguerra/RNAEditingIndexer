@@ -1,6 +1,6 @@
 FROM biocontainers/biocontainers:latest
 
-RUN conda install samtools=1.9 && \
+RUN conda config --set ssl_verify False && conda install samtools=1.9 && \
         conda install bedtools=2.27.1 && \
         conda install bamutil=1.0.14 && \
         conda install -c cyclus java-jdk=8.0.92 && \
@@ -12,7 +12,7 @@ USER root
 
 RUN mkdir -p /bin/AEI &&\
     cd /bin/AEI &&\
-    git clone https://github.com/shalomhillelroth/RNAEditingIndexer
+    git clone https://github.com/afonsoguerra/RNAEditingIndexer
 
 ENV DEV_ROOT /bin/AEI/RNAEditingIndexer
 ENV BEDTOOLS_PATH bedtools
